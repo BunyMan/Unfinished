@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 20:52:43 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/04/01 14:20:30 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:32:35 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	activebit(int sig, siginfo_t *info, void *context)
 	g_to_print.message[g_to_print.top_byte] += g_to_print.top_bit;
 	g_to_print.top_bit >>= 1;
 	if (g_to_print.top_byte == BUFFSIZE - 2 && !g_to_print.top_bit)
-		g_to_print.buff_overflow = TRUE;
+		g_to_print.buff_overflow = 1;
 }
 
 void	nullbit(int sig, siginfo_t *info, void *context)
@@ -51,16 +51,16 @@ void	nullbit(int sig, siginfo_t *info, void *context)
 	}
 	g_to_print.top_bit >>= 1;
 	if (g_to_print.top_byte == BUFFSIZE - 2 && !g_to_print.top_bit)
-		g_to_print.buff_overflow = TRUE;
+		g_to_print.buff_overflow = 1;
 	else if (!g_to_print.message[g_to_print.top_byte]
 		&& !g_to_print.top_bit)
 	{
-		g_to_print.all_receive = TRUE;
+		g_to_print.all_receive = 1;
 		kill(info->si_pid, SIGUSR1);
 	}
 }
 
-_Bool	main_handler(void)
+int	main_handler(void)
 {
 	while (1)
 	{
@@ -73,11 +73,11 @@ _Bool	main_handler(void)
 			g_to_print.top_bit = 1 << 6;
 			if (g_to_print.all_receive)
 				write(1, "\n", 1);
-			g_to_print.all_receive = FALSE;
-			g_to_print.buff_overflow = FALSE;
+			g_to_print.all_receive = 0;
+			g_to_print.buff_overflow = 0;
 		}
 	}
-	return (TRUE);
+	return (1);
 }
 
 int	main(void)

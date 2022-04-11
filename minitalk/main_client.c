@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 20:56:11 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/04/01 14:46:00 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/04/11 16:41:05 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	wrong_usage(void)
 
 void	char_sender(int pid, unsigned char byte)
 {
-	uint8_t		counter;
+	int		counter;
 
 	counter = 1 << 6;
 	while (counter)
@@ -63,9 +63,18 @@ void	success(int sig)
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
-		wrong_usage();
-	signal(SIGUSR1, success);
-	main_handler(argv[1], argv[2]);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (i == 0)
+	{
+		if (argc != 3)
+			wrong_usage();
+		else
+		{
+			signal(SIGUSR1, success);
+			main_handler(argv[1], argv[2]);
+		}
+		i++;
+	}
 }
