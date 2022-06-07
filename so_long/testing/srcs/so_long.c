@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/07 11:55:09 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/07 13:01:17 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,20 @@ int	close_x_button(win_s *ptr) //closes the window when the red "x" button is pr
 	exit(42);
 }
 
+int	i = 0;
+
 int	deal_key(int key, win_s *ptr) //closes the window when esc is pressed
 {
-	printf("key = %d\n", key);
+	//printf("key = %d\n", key);
+	i++;
+	printf("Moves = %d\n", i);
 	if (key == 53)
 	{
 		mlx_clear_window(ptr->mlx, ptr->win);
 		mlx_destroy_window(ptr->mlx, ptr->win);
 		exit(1);
 	}
-	return (0);
+	return (1);
 }
 
 int	main(void)

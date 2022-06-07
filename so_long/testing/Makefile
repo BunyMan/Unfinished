@@ -6,7 +6,7 @@
 #    By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 20:03:08 by jbuny-fe          #+#    #+#              #
-#    Updated: 2022/06/07 11:54:36 by jbuny-fe         ###   ########.fr        #
+#    Updated: 2022/06/07 13:02:02 by jbuny-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ all : $(NAME)
 	@printf "                                    \r"
 		@printf "\033[2;32m               DONE!            \r"
 		@sleep 0.7
-		@printf "\033[1;;32m               DONE!          \n"
+		@printf "\033[1;;32m               DONE!          \033[0m\n"
 
 $(NAME) :
 		@$(CC) $(FLAGS) -o $(NAME) $(SRC) -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework Appkit -I.$(HEADER) 
