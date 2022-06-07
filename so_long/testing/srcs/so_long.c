@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/07 13:01:17 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:39:37 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,41 +44,45 @@ int	main(void)
 	win_s ptr;
 	int		win_x;
 	int		win_y;
+	void	*img_ptr;
+	int		img_x;
+	int		img_y;
 
-	win_x = 500;
-	win_y = 500;
-
+	win_x = 100;
+	win_y = 100;
 
 	ptr.mlx = mlx_init();
 	ptr.win = mlx_new_window(ptr.mlx, win_x, win_y, "Testes do mlx");
-	int	x;
-	int	y;
-	x = 0;
-	y = 0;
-	while (x < win_x && y < win_y)
-	{
-		mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x00FF0000);
-		x += 10;
-		if (x >= win_x)
-		{
-			x = 0;
-			y += 10;
-		}
-		mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x0000FF00);
-		x += 10;
-		if (x >= win_x)
-		{
-			x = 0;
-			y += 10;
-		}
-		mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x000000FF);
-		x += 10;
-		if (x >= win_x)
-		{
-			x = 0;
-			y += 10;
-		}
-	}
+	// int	x;
+	// int	y;
+	// x = 0;
+	// y = 0;
+	// while (x < win_x && y < win_y)
+	// {
+	// 	mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x00FF0000);
+	// 	x += 10;
+	// 	if (x >= win_x)
+	// 	{
+	// 		x = 0;
+	// 		y += 10;
+	// 	}
+	// 	mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x0000FF00);
+	// 	x += 10;
+	// 	if (x >= win_x)
+	// 	{
+	// 		x = 0;
+	// 		y += 10;
+	// 	}
+	// 	mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x000000FF);
+	// 	x += 10;
+	// 	if (x >= win_x)
+	// 	{
+	// 		x = 0;
+	// 		y += 10;
+	// 	}
+	//}
+	img_ptr = mlx_xpm_file_to_image(ptr.mlx, "mid-atk-action.xpm", &img_x, &img_y);
+	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 0, 0);
 	mlx_key_hook(ptr.win, deal_key, &ptr);
 	mlx_hook(ptr.win, 17, 1L << 2, &close_x_button, &ptr);
 	mlx_loop(ptr.mlx);
