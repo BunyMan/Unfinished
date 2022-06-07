@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/06 20:43:51 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/07 10:40:21 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,13 @@ typedef struct window_s{
 	void	*win;
 }			win_s;
 
-typedef	struct	s_data {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_lenght;
-	int		endian;
-}			t_data;
-
-int	close_x_button(win_s *ptr)
+int	close_x_button(win_s *ptr) //closes the window when the red "x" button is pressed
 {
 	mlx_destroy_window(ptr->mlx, ptr->win);
 	exit(42);
 }
 
-int	deal_key(int key, win_s *ptr)
+int	deal_key(int key, win_s *ptr) //closes the window when esc is pressed
 {
 	printf("key = %d\n", key);
 	if (key == 53)
