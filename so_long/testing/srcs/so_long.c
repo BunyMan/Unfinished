@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/07 10:40:21 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/07 11:55:09 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,41 @@ int	deal_key(int key, win_s *ptr) //closes the window when esc is pressed
 int	main(void)
 {
 	win_s ptr;
+	int		win_x;
+	int		win_y;
+
+	win_x = 500;
+	win_y = 500;
+
 
 	ptr.mlx = mlx_init();
-	ptr.win = mlx_new_window(ptr.mlx, 500, 500, "Testes do mlx");
-	int	i;
-	int	j;
-	i = 0;
-	j = 0;
-	while (i < 500 && j < 500)
+	ptr.win = mlx_new_window(ptr.mlx, win_x, win_y, "Testes do mlx");
+	int	x;
+	int	y;
+	x = 0;
+	y = 0;
+	while (x < win_x && y < win_y)
 	{
-		mlx_pixel_put(ptr.mlx, ptr.win, i, j, 0x00FF0000);
-		i += 9;
-		if (i >= 500)
+		mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x00FF0000);
+		x += 10;
+		if (x >= win_x)
 		{
-			i = 0;
-			j += 9;
+			x = 0;
+			y += 10;
 		}
-		mlx_pixel_put(ptr.mlx, ptr.win, i, j, 0x0000FF00);
-		i += 9;
-		if (i >= 500)
+		mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x0000FF00);
+		x += 10;
+		if (x >= win_x)
 		{
-			i = 0;
-			j += 9;
+			x = 0;
+			y += 10;
 		}
-		mlx_pixel_put(ptr.mlx, ptr.win, i, j, 0x000000FF);
-		i += 9;
-		if (i >= 500)
+		mlx_pixel_put(ptr.mlx, ptr.win, x, y, 0x000000FF);
+		x += 10;
+		if (x >= win_x)
 		{
-			i = 0;
-			j += 9;
+			x = 0;
+			y += 10;
 		}
 	}
 	mlx_key_hook(ptr.win, deal_key, &ptr);
