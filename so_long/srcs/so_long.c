@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/08 14:06:14 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:57:21 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,18 @@ int	main(void)
 	// 		y += 10;
 	// 	}
 	//}
-	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, nix, niy);
+	while (nix < win_x && niy < win_y)
+	{
+		mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, nix, niy);
+		nix += img_x;
+		if (nix >= win_x)
+		{
+			niy += img_y;
+			nix = 0;
+		}
+		
+	}
+	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 500, 500);
 	mlx_key_hook(ptr.win, deal_key, &ptr);
 	mlx_hook(ptr.win, 17, 1L << 2, &close_x_button, &ptr);
 	mlx_loop(ptr.mlx);
