@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/08 15:09:14 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/08 15:23:04 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 typedef struct window_s{
 	void	*mlx;
 	void	*win;
+	int		moves;
 }			win_s;
 
 int	close_x_button(win_s *ptr) //closes the window when the red "x" button is pressed
@@ -23,13 +24,11 @@ int	close_x_button(win_s *ptr) //closes the window when the red "x" button is pr
 	exit(42);
 }
 
-int	i = 0;
-
 int	deal_key(int key, win_s *ptr) //closes the window when esc is pressed
 {
 	//printf("key = %d\n", key);
-	i++;
-	printf("Moves = %d\n", i);
+	ptr->moves++;
+	printf("Moves = %d\n", ptr->moves);
 	if (key == 53)
 	{
 		mlx_clear_window(ptr->mlx, ptr->win);
@@ -98,6 +97,7 @@ int	main(void)
 	}
 	img_ptr = mlx_xpm_file_to_image(ptr.mlx, "includes/atk.xpm", &img_x, &img_y);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 320, 320);
+	ptr.moves = 0;
 	mlx_key_hook(ptr.win, deal_key, &ptr);
 	mlx_hook(ptr.win, 17, 1L << 2, &close_x_button, &ptr);
 	mlx_loop(ptr.mlx);
