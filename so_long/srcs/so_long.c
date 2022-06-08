@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/07 17:39:37 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/08 13:43:26 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int	main(void)
 	win_y = 100;
 
 	ptr.mlx = mlx_init();
-	ptr.win = mlx_new_window(ptr.mlx, win_x, win_y, "Testes do mlx");
+	img_ptr = mlx_xpm_file_to_image(ptr.mlx, "includes/beach-ball.xpm", &img_x, &img_y);
+	ptr.win = mlx_new_window(ptr.mlx, img_x, img_y, "Testes do mlx");
 	// int	x;
 	// int	y;
 	// x = 0;
@@ -81,7 +82,6 @@ int	main(void)
 	// 		y += 10;
 	// 	}
 	//}
-	img_ptr = mlx_xpm_file_to_image(ptr.mlx, "mid-atk-action.xpm", &img_x, &img_y);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 0, 0);
 	mlx_key_hook(ptr.win, deal_key, &ptr);
 	mlx_hook(ptr.win, 17, 1L << 2, &close_x_button, &ptr);
