@@ -6,7 +6,7 @@
 #    By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 20:03:08 by jbuny-fe          #+#    #+#              #
-#    Updated: 2022/06/07 13:02:02 by jbuny-fe         ###   ########.fr        #
+#    Updated: 2022/06/08 15:47:59 by jbuny-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 CC = cc 
 FLAGS = -Wall -Wextra -Werror
 RM = -rm -rf
-SRC	= srcs/so_long.c
+SRC	= srcs/*.c
 HEADER = /includes
 
 G			=	\033[0;32m
