@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/08 13:43:26 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/08 14:06:14 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,21 @@ int	deal_key(int key, win_s *ptr) //closes the window when esc is pressed
 int	main(void)
 {
 	win_s ptr;
-	int		win_x;
-	int		win_y;
 	void	*img_ptr;
 	int		img_x;
 	int		img_y;
-
-	win_x = 100;
-	win_y = 100;
+	int		win_x;
+	int		win_y;
+	int		nix;
+	int		niy;
 
 	ptr.mlx = mlx_init();
-	img_ptr = mlx_xpm_file_to_image(ptr.mlx, "includes/beach-ball.xpm", &img_x, &img_y);
-	ptr.win = mlx_new_window(ptr.mlx, img_x, img_y, "Testes do mlx");
+	img_ptr = mlx_xpm_file_to_image(ptr.mlx, "includes/atk.xpm", &img_x, &img_y);
+	win_x = img_x * 10;
+	win_y = img_y * 10;
+	ptr.win = mlx_new_window(ptr.mlx, win_x, win_y, "Testes do mlx");
+	nix = 0;
+	niy = 0;
 	// int	x;
 	// int	y;
 	// x = 0;
@@ -82,7 +85,7 @@ int	main(void)
 	// 		y += 10;
 	// 	}
 	//}
-	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 0, 0);
+	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, nix, niy);
 	mlx_key_hook(ptr.win, deal_key, &ptr);
 	mlx_hook(ptr.win, 17, 1L << 2, &close_x_button, &ptr);
 	mlx_loop(ptr.mlx);
