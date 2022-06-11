@@ -18,12 +18,12 @@ void	win_printer(t_win_s *ptr)
 	int		img_y;
 	char	*b_path;
 
-	b_path = "includes/back.xpm";
+	b_path = "includes/pool.xpm";
 	ptr->mlx = mlx_init();
 	ptr->img_ptr = mlx_xpm_file_to_image(ptr->mlx, b_path, &img_x, &img_y);
-	ptr->win_x = img_x * 10;
+	ptr->win_x = img_x * 11;
 	ptr->win_y = img_y * 10;
-	ptr->win = mlx_new_window(ptr->mlx, ptr->win_x, ptr->win_y, "Testing");
+	ptr->win = mlx_new_window(ptr->mlx, ptr->win_x, ptr->win_y, "quack quack motherfvcker");
 	ptr->nix = 0;
 	ptr->niy = 0;
 	while (ptr->nix < ptr->win_x && ptr->niy < ptr->win_y)
