@@ -18,7 +18,7 @@ void	win_printer(t_win_s *ptr)
 	int		img_y;
 	char	*b_path;
 
-	b_path = "includes/pool.xpm";
+	b_path = "sprites/pool.xpm";
 	ptr->mlx = mlx_init();
 	ptr->img_ptr = mlx_xpm_file_to_image(ptr->mlx, b_path, &img_x, &img_y);
 	ptr->win_x = img_x * 11;
