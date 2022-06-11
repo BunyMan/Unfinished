@@ -41,3 +41,14 @@ int	map_checker(char **map, t_win_s *m, int x, int y)
 	return (0);
 }
 
+int check_valid_map_name(char *str)
+{
+    char **checker;
+
+    if (!strchr(str, '.'))
+        return (1);
+    checker = ft_split(str, '.');
+    if(ft_strncmp(checker[1], "ber", 3) == 0 && !checker[2])
+        return(0);
+    return(1);
+}
