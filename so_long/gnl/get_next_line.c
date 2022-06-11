@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbuny-fe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/27 20:36:32 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/03/05 15:24:22 by jbuny-fe         ###   ########.fr       */
+/*   Created: 2022/03/02 21:30:08 by jbuny-fe          #+#    #+#             */
+/*   Updated: 2022/06/11 19:35:14 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 //linha a retornar, se nao houver nova linha retorna nulo, vai para o fim do
-//ficheiro, malloc para o fim do ficheiro, linha = buffer, substitui \0 por \n 
+//ficheiro, malloc para o fim do ficheiro, linha = buffer, substitui \0 por \n
 char	*ft_linha(char *buffer)
 {
 	int		i;
@@ -63,7 +63,7 @@ char	*ft_proxima(char *buffer)
 }
 
 //free e join
-char	*ft_free(char *buffer, char *res)
+char	*fr_free(char *buffer, char *res)
 {
 	char	*temp;
 
@@ -74,7 +74,7 @@ char	*ft_free(char *buffer, char *res)
 
 //malloc se o resto nao existir, malloc do buffer, enquanto nao esta
 //no fim do ficheiro fica a ler, para se encontrar \n
-char	*ft_leitor(int fd, char *resto)
+char	*leitor(int fd, char *resto)
 {
 	char	*buffer;
 	int		leitor;
@@ -92,7 +92,7 @@ char	*ft_leitor(int fd, char *resto)
 			return (NULL);
 		}
 		buffer[leitor] = 0;
-		resto = ft_free(resto, buffer);
+		resto = fr_free(resto, buffer);
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
@@ -100,17 +100,20 @@ char	*ft_leitor(int fd, char *resto)
 	return (resto);
 }
 
+//usa o [OPEN_MAX] da biblioteca <limits.h> que lhe permite ter o número
+//máximo de processos abertos de maneira a que possa abrir vários fd 
+//ao mesmo tempo
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[OPEN_MAX];
 	char		*linha;
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || read(fd, 0, 0) < 0)
 		return (NULL);
-	buffer = ft_leitor(fd, buffer);
-	if (!buffer)
+	buffer[fd] = leitor(fd, buffer[fd]);
+	if (!buffer[fd])
 		return (NULL);
-	linha = ft_linha(buffer);
-	buffer = ft_proxima(buffer);
+	linha = ft_linha(buffer[fd]);
+	buffer[fd] = ft_proxima(buffer[fd]);
 	return (linha);
 }
