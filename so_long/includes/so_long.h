@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:28:40 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/08 18:05:32 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:24:04 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,21 @@ typedef struct window_s{
 	int		width;
 	int		height;
 }			t_win_s;
+
+typedef struct sprites_s{
+	char	*duck_front;
+	char	*duck_front_hat;
+	char	*duck_back;
+	char	*duck_back_hat;
+	char	*duck_left;
+	char	*duck_left_hat;
+	char	*duck_right;
+	char	*duck_right_hat;
+	char	*edge;
+	char	*gator;
+	char	*hat;
+	char	*goose;
+}			t_spr_s;
 
 int		close_x_button(t_win_s *ptr);
 int		deal_key(int key, t_win_s *ptr);
