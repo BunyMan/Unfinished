@@ -26,7 +26,7 @@ void	win_printer(t_win_s *ptr)
 	ptr->mlx = mlx_init();
 	ptr->pool_ptr = mlx_xpm_file_to_image(ptr->mlx, pool, &pool_x, &pool_y);
 	ptr->edge_ptr = mlx_xpm_file_to_image(ptr->mlx, edge, &edge_x, &edge_y);
-	ptr->win_x = pool_x * 14;
+	ptr->win_x = pool_x * 13;
 	ptr->win_y = pool_y * 10;
 	ptr->win = mlx_new_window(ptr->mlx, ptr->win_x, ptr->win_y, "quack quack motherfvcker");
 	ptr->nix = 0;
@@ -38,15 +38,15 @@ void	win_printer(t_win_s *ptr)
 			mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->edge_ptr, ptr->nix, ptr->niy);
 			ptr->nix += pool_x;
 			if (ptr->nix == ptr->win_x)
-				ptr->niy++;
+				ptr->niy ++;
 		}
-		if (ptr->niy >= 1 && ptr->niy <= ptr->win_y - 64)
+		if (ptr->niy >= 1 && ptr->niy <= ptr->win_y - 70)
 		{
 			mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->pool_ptr, ptr->nix, ptr->niy);
 			ptr->nix += pool_x;
 			if (ptr->nix >= ptr->win_x)
 			{
-				ptr->niy += pool_y;
+				ptr->niy += pool_y - 1;
 				ptr->nix = 0;
 			}
 		}

@@ -21,7 +21,10 @@ int	close_x_button(t_win_s *ptr)
 int	deal_key(int key, t_win_s *ptr)
 {
 	ptr->moves++;
-	printf("Moves = %d\n", ptr->moves);
+	if (ptr->moves == 1)
+		printf("%d move\n", ptr->moves);
+	else
+		printf("%d moves\n", ptr->moves);
 	if (key == 53)
 	{
 		mlx_clear_window(ptr->mlx, ptr->win);

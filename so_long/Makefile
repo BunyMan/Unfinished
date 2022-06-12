@@ -6,7 +6,7 @@
 #    By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 20:03:08 by jbuny-fe          #+#    #+#              #
-#    Updated: 2022/06/12 19:26:39 by jbuny-fe         ###   ########.fr        #
+#    Updated: 2022/06/12 19:34:59 by jbuny-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,9 @@ RESET      	=  	\033[0m
 
 all : $(NAME)
 	@printf "                                    \r"
-		@printf "\033[2;32m               DONE!            \r"
+		@printf "\033[2;32m               SUCCESS!            \r"
 		@sleep 0.7
-		@printf "\033[1;;32m               DONE!          \033[0m\n"
+		@printf "\033[1;;32m               SUCCESS!          \033[0m\n"
 
 $(NAME) :
 		@$(CC) $(FLAGS) -o $(NAME) $(SRC) -I /Users/bunyman/desktop/42/cursus/unfinished/so_long/includes/minilibx -L /Users/bunyman/desktop/42/cursus/unfinished/so_long/includes/minilibx -lmlx -framework OpenGL -framework Appkit -I.$(HEADER) 
@@ -54,7 +54,7 @@ fclean: clean
 		@printf "       REMOVING ALL .o FILES . . . \r"
 		@sleep 0.2
 		@printf "                                     \r"
-		@printf "\033[1;;32m               DONE!\n"
+		@printf "\033[1;;32m               SUCCESS!\n"
 
 re: fclean all
 
