@@ -6,7 +6,7 @@
 #    By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 20:03:08 by jbuny-fe          #+#    #+#              #
-#    Updated: 2022/06/12 15:32:16 by jbuny-fe         ###   ########.fr        #
+#    Updated: 2022/06/12 19:26:39 by jbuny-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ all : $(NAME)
 		@printf "\033[1;;32m               DONE!          \033[0m\n"
 
 $(NAME) :
-		@$(CC) $(FLAGS) -o $(NAME) $(SRC) -I /Users/jbuny-fe/desktop/cursus/unfinished/so_long/minilibx -lmlx -framework OpenGL -framework Appkit -I.$(HEADER) 
+		@$(CC) $(FLAGS) -o $(NAME) $(SRC) -I /Users/bunyman/desktop/42/cursus/unfinished/so_long/includes/minilibx -L /Users/bunyman/desktop/42/cursus/unfinished/so_long/includes/minilibx -lmlx -framework OpenGL -framework Appkit -I.$(HEADER) 
 
 clean : 
 	@rm -f *.o
