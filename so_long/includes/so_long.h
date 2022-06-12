@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:28:40 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/12 15:24:04 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/12 15:42:15 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct window_s{
 	void	*mlx;
 	void	*win;
 	int		moves;
-	void	*img_ptr;
+	void	*pool_ptr;
+	void	*edge_ptr;
 	int		win_x;
 	int		win_y;
 	int		nix;
@@ -52,9 +53,9 @@ typedef struct sprites_s{
 	char	*goose;
 }			t_spr_s;
 
+//interactions.c
 int		close_x_button(t_win_s *ptr);
 int		deal_key(int key, t_win_s *ptr);
+//window_printer.c
 void	win_printer(t_win_s *ptr);
-int		map_checker(char **map, t_win_s *m, int x, int y);
-int		check_valid_map_name(char *str);
 #endif
