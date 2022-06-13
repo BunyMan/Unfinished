@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:28:40 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/13 16:11:02 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/13 17:15:05 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+# include <math.h>
+#include <fcntl.h>
 
 typedef struct window_s{
 	void	*mlx;
@@ -37,6 +39,8 @@ typedef struct window_s{
 	int		width;
 	int		height;
 	void	*img_ptr;
+	int		map_f;
+	char	**map;
 }			win_s;
 
 typedef struct sprites_s{
@@ -56,6 +60,8 @@ typedef struct sprites_s{
 	char	*goose;
 }			spr_s;
 
+//so_long.c
+void error(char *str);
 //interactions.c
 int		close_x_button(win_s *ptr);
 int		deal_key(int key, win_s *ptr);
@@ -65,5 +71,10 @@ void	map_printer(win_s *ptr, int pool_x, int pool_y);
 void	edge_printer(win_s *ptr, int pool_x, int pool_y);
 //sprite_printer.c
 void	spr_printer(spr_s *spr, win_s *win);
+//validator.c
+int	map_checker(char **map, win_s *welp, int x, int y);
+int	map_name(char *str);
+//starter.c
+int	starter(win_s *idk, char *argv);
 
 #endif
