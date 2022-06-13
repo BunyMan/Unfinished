@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:28:40 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/12 15:42:15 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:53:27 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ typedef struct window_s{
 
 typedef struct sprites_s{
 	char	*duck_front;
-	char	*duck_front_hat;
+	char	*duck_frnt_hat;
 	char	*duck_back;
 	char	*duck_back_hat;
 	char	*duck_left;
 	char	*duck_left_hat;
 	char	*duck_right;
-	char	*duck_right_hat;
+	char	*duck_rght_hat;
 	char	*edge;
 	char	*gator;
 	char	*hat;
@@ -58,4 +58,6 @@ int		close_x_button(t_win_s *ptr);
 int		deal_key(int key, t_win_s *ptr);
 //window_printer.c
 void	win_printer(t_win_s *ptr);
+void	map_printer(t_win_s *ptr, int pool_x, int pool_y);
+void	edge_printer(t_win_s *ptr, int pool_x, int pool_y);
 #endif

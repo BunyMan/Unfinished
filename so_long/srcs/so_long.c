@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/12 15:33:46 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/13 11:27:40 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(void)
 {
-	t_spr_s spr;
+	t_spr_s	spr;
 	t_win_s	ptr;
 	void	*img_ptr;
 	int		img_x;
@@ -24,8 +24,8 @@ int	main(void)
 	spr.duck_front = "sprites/duck-front.xpm";
 	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.duck_front, &img_x, &img_y);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 64, 320);
-	spr.duck_front_hat = "sprites/duck-front-hat.xpm";
-	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.duck_front_hat, &img_x, &img_y);
+	spr.duck_frnt_hat = "sprites/duck-front-hat.xpm";
+	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.duck_frnt_hat, &img_x, &img_y);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 128, 320);
 	spr.duck_back = "sprites/duck-back.xpm";
 	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.duck_back, &img_x, &img_y);
@@ -42,8 +42,8 @@ int	main(void)
 	spr.duck_right = "sprites/duck-right.xpm";
 	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.duck_right, &img_x, &img_y);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 448, 320);
-	spr.duck_right_hat = "sprites/duck-right-hat.xpm";
-	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.duck_right_hat, &img_x, &img_y);
+	spr.duck_rght_hat = "sprites/duck-right-hat.xpm";
+	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.duck_rght_hat, &img_x, &img_y);
 	mlx_put_image_to_window(ptr.mlx, ptr.win, img_ptr, 512, 320);
 	spr.gator = "sprites/gator.xpm";
 	img_ptr = mlx_xpm_file_to_image(ptr.mlx, spr.gator, &img_x, &img_y);
