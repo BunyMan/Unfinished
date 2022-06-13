@@ -6,19 +6,19 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 15:37:40 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/08 17:46:23 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/13 15:15:25 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	close_x_button(t_win_s *ptr)
+int	close_x_button(win_s *ptr)
 {
 	mlx_destroy_window(ptr->mlx, ptr->win);
 	exit(42);
 }
 
-int	deal_key(int key, t_win_s *ptr)
+int	deal_key(int key, win_s *ptr)
 {
 	ptr->moves++;
 	if (ptr->moves == 1)

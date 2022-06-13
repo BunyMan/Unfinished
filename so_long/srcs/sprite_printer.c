@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   sprite_printer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 15:54:49 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/13 16:11:08 by jbuny-fe         ###   ########.fr       */
+/*   Created: 2022/06/13 15:35:34 by jbuny-fe          #+#    #+#             */
+/*   Updated: 2022/06/13 16:12:34 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(void)
+void	spr_printer(spr_s *spr, win_s *win)
 {
-	spr_s	spr;
-	win_s	win;
-
-	win_printer(&win);
-	spr_printer(&spr, &win);
-	win.moves = 0;
-	mlx_key_hook(win.win, deal_key, &win);
-	mlx_hook(win.win, 17, 1L << 2, &close_x_button, &win);
-	mlx_loop(win.mlx);
-	return (0);
+	spr->duck_front = "sprites/duck-front.xpm";
+	win->img_ptr = mlx_xpm_file_to_image(win->mlx, spr->duck_front,
+			&(spr->img_x), &(spr->img_y));
+	mlx_put_image_to_window(win->mlx, win->win, win->img_ptr, 384, 320);
 }

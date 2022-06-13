@@ -6,49 +6,52 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:05:21 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/13 14:27:35 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:04:58 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	edge_printer(t_win_s *ptr, int pool_x, int pool_y)
+void	edge_printer(win_s *win, int pool_x, int pool_y)
 {
-	if (ptr->niy >= 1 && ptr->niy <= ptr->win_y - 70)
+	if (win->niy >= 1 && win->niy <= win->win_y - 70)
 	{
-		mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->pool_ptr, ptr->nix, ptr->niy);
-		ptr->nix += pool_x;
-		if (ptr->nix >= ptr->win_x)
+		mlx_put_image_to_window(win->mlx, win->win, win->pool_ptr,
+			win->nix, win->niy);
+		win->nix += pool_x;
+		if (win->nix >= win->win_x)
 		{
-			ptr->niy += pool_y - 1;
-			ptr->nix = 0;
+			win->niy += pool_y - 1;
+			win->nix = 0;
 		}
 	}
 }
 
-void	map_printer(t_win_s *ptr, int pool_x, int pool_y)
+void	map_printer(win_s *win, int pool_x, int pool_y)
 {
-	while (ptr->nix < ptr->win_x && ptr->niy < ptr->win_y)
+	while (win->nix < win->win_x && win->niy < win->win_y)
 	{
-		if (ptr->niy == 0 || ptr->niy >= ptr->win_y - 64)
+		if (win->niy == 0 || win->niy >= win->win_y - 64)
 		{
-			mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->edge_ptr, ptr->nix, ptr->niy);
-			ptr->nix += pool_x;
-			if (ptr->nix == ptr->win_x)
-				ptr->niy ++;
+			mlx_put_image_to_window(win->mlx, win->win, win->edge_ptr,
+				win->nix, win->niy);
+			win->nix += pool_x;
+			if (win->nix == win->win_x)
+				win->niy ++;
 		}
-		if (ptr->nix == 0 || ptr->nix >= ptr->win_x - 64)
+		if (win->nix == 0 || win->nix >= win->win_x - 64)
 		{
-			mlx_put_image_to_window(ptr->mlx, ptr->win, ptr->edge_ptr, ptr->nix, ptr->niy);
-			ptr->nix += pool_x;
-			if (ptr->nix == ptr->win_x)
-				ptr->niy ++;
+			mlx_put_image_to_window(win->mlx, win->win, win->edge_ptr,
+				win->nix, win->niy);
+			win->nix += pool_x;
+			if (win->nix == win->win_x)
+				win->niy ++;
 		}
-		edge_printer(ptr, pool_x, pool_y);
+		edge_printer(win, pool_x, pool_y);
 	}
 }
 
-void	win_printer(t_win_s *ptr)
+void	win_printer(win_s *win)
 {
 	int		pool_y;
 	int		pool_x;
@@ -57,13 +60,13 @@ void	win_printer(t_win_s *ptr)
 
 	pool = "sprites/pool.xpm";
 	edge = "sprites/edge.xpm";
-	ptr->mlx = mlx_init();
-	ptr->pool_ptr = mlx_xpm_file_to_image(ptr->mlx, pool, &pool_x, &pool_y);
-	ptr->edge_ptr = mlx_xpm_file_to_image(ptr->mlx, edge, &pool_x, &pool_y);
-	ptr->win_x = pool_x * 13;
-	ptr->win_y = pool_y * 10;
-	ptr->win = mlx_new_window(ptr->mlx, ptr->win_x, ptr->win_y, "quack");
-	ptr->nix = 0;
-	ptr->niy = 0;
-	map_printer(ptr, pool_x, pool_y);
+	win->mlx = mlx_init();
+	win->pool_ptr = mlx_xpm_file_to_image(win->mlx, pool, &pool_x, &pool_y);
+	win->edge_ptr = mlx_xpm_file_to_image(win->mlx, edge, &pool_x, &pool_y);
+	win->win_x = pool_x * 13;
+	win->win_y = pool_y * 10;
+	win->win = mlx_new_window(win->mlx, win->win_x, win->win_y, "quack");
+	win->nix = 0;
+	win->niy = 0;
+	map_printer(win, pool_x, pool_y);
 }
