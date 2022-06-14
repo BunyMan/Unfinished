@@ -6,7 +6,7 @@
 #    By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/06 20:03:08 by jbuny-fe          #+#    #+#              #
-#    Updated: 2022/06/13 11:21:02 by jbuny-fe         ###   ########.fr        #
+#    Updated: 2022/06/14 14:43:13 by jbuny-fe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ fclean: clean
 		@printf "       REMOVING ALL .o FILES . . . \r"
 		@sleep 0.2
 		@printf "                                     \r"
-		@printf "\033[1;;32m               SUCCESS!\n"
+		@printf "\033[1;;32m               SUCCESS!\033[0m\n"
 
 re: fclean all
 

@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:28:40 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/13 17:15:05 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:57:52 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct window_s{
 }			win_s;
 
 typedef struct sprites_s{
+	void	*mlx;
 	int		img_x;
 	int		img_y;
 	char	*duck_front;
@@ -58,6 +59,9 @@ typedef struct sprites_s{
 	char	*gator;
 	char	*hat;
 	char	*goose;
+	char	*pool;
+	int		img_w;
+	int		img_h;
 }			spr_s;
 
 //so_long.c
@@ -76,5 +80,6 @@ int	map_checker(char **map, win_s *welp, int x, int y);
 int	map_name(char *str);
 //starter.c
 int	starter(win_s *idk, char *argv);
+void img_loader(spr_s *i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:05:21 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/13 16:04:58 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/14 14:56:40 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,32 @@ void	win_printer(win_s *win)
 	win->nix = 0;
 	win->niy = 0;
 	map_printer(win, pool_x, pool_y);
+}
+
+void	starting_print(win_s *m, spr_s *s)
+{
+	int	i = 0;
+	int	j = 0;
+
+	while (i < m -> height)
+	{
+		while (j < m -> width)
+		{
+			if (m -> map[i][j] == '1')
+				mlx_put_image_to_window(m -> mlx, m -> win, s -> edge, j * (s -> img_w), i * (s -> img_h));
+			else
+				mlx_put_image_to_window(m -> mlx, m -> win, s -> pool, j * (s -> img_w), i * (s -> img_h));
+			if (m -> map[i][j] == 'C')
+				mlx_put_image_to_window(m -> mlx, m -> win, s -> hat, j * (s -> img_w), i * (s -> img_h));
+			else if (m -> map[i][j] == 'E')
+				mlx_put_image_to_window(m -> mlx, m -> win, s -> hat, j * (s -> img_w), i * (s -> img_h));
+			else if (m -> map[i][j] == 'P')
+				mlx_put_image_to_window(m -> mlx, m -> win, s -> duck_front, j * (s -> img_w), i * (s -> img_h));
+			else if (m -> map[i][j] == 'B')
+				mlx_put_image_to_window(m -> mlx, m -> win, s -> gator, j * (s -> img_w), i * (s -> img_h));
+			j++;
+		}
+		j = 0;
+		i ++;
+	}
 }
