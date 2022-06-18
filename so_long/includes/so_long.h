@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 16:28:40 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/14 14:57:52 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/16 14:15:51 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <math.h>
-#include <fcntl.h>
+# include <fcntl.h>
+#include <stddef.h>
 
 typedef struct window_s{
 	void	*mlx;
