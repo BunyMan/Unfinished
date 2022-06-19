@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 16:24:28 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/18 16:53:27 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/19 14:24:39 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_window {
 	char	**map;
 	int		win_x;
 	int		win_y;
-	int		moves;
+	int		move_counter;
 	char	*scream;
 	t_sprites img_0;
 	t_sprites img_1;

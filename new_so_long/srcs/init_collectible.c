@@ -6,7 +6,7 @@
 /*   By: jbuny-fe <jbuny-fe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/18 17:59:03 by jbuny-fe          #+#    #+#             */
-/*   Updated: 2022/06/18 18:06:53 by jbuny-fe         ###   ########.fr       */
+/*   Updated: 2022/06/19 13:17:02 by jbuny-fe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,27 @@ void	puff(t_window *win, int i, int j)
 		win->map[i][j] = '0';
 		win->img_c.counter++;
 	}
-	
+	else
+	{
+		mlx_put_image_to_window(win->mlx, win->window, \
+		win->img_c.img, win->img_c.x, win->img_c.y);
+	}
+}
+
+void	update_collectible(t_window *win)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	ft_init_collectible(win);
+	while (win->map[i][++j])
+	{
+		if (win->map[i][j] == 'C')
+		{
+			win->img_c.x = j * 64;
+			win->img_c.y = i * 64;
+			puff(win, i, j);
+		}
+	}
 }
